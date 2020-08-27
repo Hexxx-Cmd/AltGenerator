@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <title>Alt genereator</title>
+  </head>
+  <body>
+    <style>
+            body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+          margin: 0;
+          font-family: sans-serif;
+          background-color: rgb(228, 45, 131);
+          background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+      background-size: 1800% 1800%;
+
+      -webkit-animation: rainbow 18s ease infinite;
+      -z-animation: rainbow 18s ease infinite;
+      -o-animation: rainbow 18s ease infinite;
+        animation: rainbow 18s ease infinite;}
+
+      @-webkit-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @-moz-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @-o-keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      @keyframes rainbow {
+          0%{background-position:0% 82%}
+          50%{background-position:100% 19%}
+          100%{background-position:0% 82%}
+      }
+      }
+
+      h1, .content {
+          margin: 0;
+          color: rgb(228, 228, 228);
+          font-family: sans-serif;
+      }
+
+      button {
+          width: 170px;
+          height: 48px;
+          background-color: transparent;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          font-family: sans-serif;
+          border-radius: 5px;
+          color: #e4e4e4;
+          transition-duration: 0.3s;
+      }
+
+      button.gen {
+          border: 3px solid #25c525;
+      }
+
+              .sansserif {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+              footer {
+          clear: both;
+          position: relative;
+          height: 200px;
+          margin-top: -200px;
+      }
+    </style>
+    <div class="content">
+      <h1>
+        Account:
+        <div class="alt">Loading...</div>
+      </h1>
+      <button class="gen" onclick="gen()">Generate</button><br /><br />
+    </div>
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "/generate", true);
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          const response = JSON.parse(this.responseText);
+          document.getElementsByClassName("alt")[0].innerHTML = response.alt;
+          window.stop();
+        }
+      };
+      xhr.send();
+      function gen() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "/generate", true);
+        xhr.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            const response = JSON.parse(this.responseText);
+            document.getElementsByClassName("alt")[0].innerHTML = response.alt;
+          }
+        };
+        xhr.send();
+      }
+    </script>
+    <footer>Made By ! Dark&#127853;#3345</footer>
+  </body>
+</html>
